@@ -1,11 +1,11 @@
-<p id="notice"><%= notice %></p>
-
 <div class="jumbotron">
   <h1 class="display-4"><%= @staff.first_name %> <%= @staff.last_name %></h1>
   <p class="lead"><%= @staff.email %> | <%= @staff.phone %> | <%= @staff.vk %></p>
   <p class="lead">
     <br/>
-    <%= link_to 'Edit', edit_staff_path(@staff), class:"btn btn-dark" %> 
+    <% if user_signed_in? %>
+      <%= link_to 'Edit', edit_staff_path(@staff), class:"btn btn-dark" %> 
+    <% end %>
     <%= link_to 'Back', staffs_path, class:"btn btn-dark" %>
   </p>
 </div>
