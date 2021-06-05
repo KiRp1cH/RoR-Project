@@ -6,6 +6,7 @@
     <% if user_signed_in? %>
       <%= link_to 'Edit', edit_staff_path(@staff), class:"btn btn-dark" %> 
     <% end %>
+    <%= link_to 'Delete', @staff, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
     <%= link_to 'Back', staffs_path, class:"btn btn-dark" %>
   </p>
 </div>
