@@ -1,6 +1,7 @@
 class StaffsController < ApplicationController
-  before_action :set_staff, only: %i[ show edit update destroy ]
-
+  before_action :set_staff, only: %i[show edit update destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   # GET /staffs or /staffs.json
   def index
     @staffs = Staff.all
@@ -12,7 +13,8 @@ class StaffsController < ApplicationController
 
   # GET /staffs/new
   def new
-    @staff = Staff.new
+    #@staff = Staff.new
+    @staff = current_user.staffs.build
   end
 
   # GET /staffs/1/edit
@@ -21,8 +23,8 @@ class StaffsController < ApplicationController
 
   # POST /staffs or /staffs.json
   def create
-    @staff = Staff.new(staff_params)
-
+    #@staff = Staff.new(staff_params)
+    @staff = current_user.staffs.build(staff_params)
     respond_to do |format|
       if @staff.save
         format.html { redirect_to @staff, notice: "Staff was successfully created." }
@@ -55,6 +57,11 @@ class StaffsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+def correct_user
+  @staff = current_user.staffs.find_by(id: params[:id])
+  redirect_to staff_path, notice: "Not Authorized To Edit This Friend" if @staff.nil?
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.
