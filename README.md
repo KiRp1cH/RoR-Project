@@ -1,24 +1,30 @@
-# README
+Web app that allow you to add staff(other users) to the user.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Technology stack:
 
-Things you may want to cover:
+    Frontend:
+    - Bootstrap
 
-* Ruby version
+    Backend:
+    - Ruby on Rails 
 
-* System dependencies
+    Database:
+    - Postgres
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    Gem list:
+    - rails
+    - puma
+    - sass-rails
+    - webpacker
+    - turbolinks
+    - jbuilder
+    - devise
+    - bootsnap
+    - byebug
+    - web-console
+    - rack-mini-profiler
+    - capybara
+    - selenium-webdriver
+    - webdrivers
+    - tzinfo-data
+    
